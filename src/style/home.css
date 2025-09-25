@@ -1,0 +1,130 @@
+
+.home-page {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../asserts/backgroundStarter.png');
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+}
+
+.home-container {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px #000;
+  font-family: 'Press Start 2P', cursive;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 2px 2px 4px #000; }
+  to { text-shadow: 4px 4px 8px #ffcc00; }
+}
+
+.start-button {
+  font-size: 20px;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #ff4444, #ff8800);
+  border: 4px solid #ffcc00;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: 'Press Start 2P', cursive;
+  position: relative;
+  overflow: hidden;
+}
+
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.start-button:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+.start-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ffcc00;
+}
+
+.description {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #ddd;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* Pixel art border effect */
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px dashed #ffcc00;
+  border-radius: 18px;
+  z-index: -1;
+  animation: borderBlink 1.5s infinite;
+}
+
+@keyframes borderBlink {
+  50% { border-color: #ff8800; }
+}
+.rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* để không che chuột */
+  overflow: hidden;
+}
+
+.raindrop {
+  position: fixed;
+  top: -50px;
+  width: 10px;
+  height: 30px;
+  border-radius: 30px;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}

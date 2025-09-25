@@ -1,0 +1,35 @@
+.weapon-page {
+    /* background-image: url("../asserts/backgroundImage.png");  */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}  
+.titleAll{
+  color: rgb(255, 210, 155);
+  font-size: 70px;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 650;
+}
+.card{
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+.card:hover{
+  outline: 3px solid rgb(255, 196, 123);
+  transform: scale(1.02, 1.02);
+}
+
+.card-title{
+  font-weight: 700;
+  font-family: "Poetsen One", sans-serif;
+}
+.text-detail{
+  font-family: "Pixelify Sans", monospace;
+  
+}
+.pros-rarity{
+  font-family: "Poetsen One", sans-serif;
+}
