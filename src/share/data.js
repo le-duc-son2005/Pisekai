@@ -106,3 +106,25 @@ export const weapons = [
 }
 
 ];
+
+ export const features = [
+    { title: "Battle Pass", img: require("../asserts/Battlepass-Iconic.png"), path: "/Battle-Pass" },
+    { title: "World-Boss", img: require("../asserts/Boss-Iconic.png"), path: "/Boss" },
+    { title: "Enchantment", img: require("../asserts/Enchantment-Iconic.png"), path: "/Enchantment" },
+    { title: "Friend", img: require("../asserts/Friend-Iconic.png"), path: "/Friends" }, 
+  ];
+export const marketData = [
+    { player: "Người chơi A", img: require("../asserts/Battlepass-Iconic.png"), weapon: "Sword of Shadows", price: 16000 },
+    { player: "Người chơi B", img: require("../asserts/Boss-Iconic.png"), weapon: "Staff of Truth", price: 15000},
+    { player: "Người chơi C", img: require("../asserts/Boss-Iconic.png"), weapon: "Sword of Fury", price: 20000 },
+    { player: "Người chơi D", img: require("../asserts/Boss-Iconic.png"), weapon: "Axe of Eternity", price: 17500 },
+    { player: "Người chơi E", img: require("../asserts/Boss-Iconic.png"), weapon: "Bow of Light", price: 18000 },
+  ];
+
+export const topPlayers = [
+  { id: 1, name: 'MAX ALEXIS', score: 9980, image: 'https://i.pinimg.com/736x/1d/71/6c/1d716c0fad778ecc12598f384e7dd000.jpg' },
+  { id: 2, name: 'WILIUM LILI', score: 9850, image:'https://i.pinimg.com/736x/13/d5/99/13d599b1d20fb60c5d5d92239785140c.jpg' },
+  { id: 3, name: 'MAC MARSH', score: 9999, image: 'https://i.pinimg.com/736x/72/f7/2b/72f72bc8c1d9c29866197410adf86985.jpg' },
+  { id: 4, name: 'EVA RAINA', score: 9710, image: 'https://i.pinimg.com/736x/32/17/5c/32175cff8a5524145ed04a4a30c924fd.jpg' },
+  { id: 5, name: 'ROBIN CLOTH', score: 9600, image:' https://i.pinimg.com/736x/13/d5/99/13d599b1d20fb60c5d5d92239785140c.jpg' },
+];

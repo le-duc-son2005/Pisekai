@@ -13,16 +13,16 @@
   font-family: "Henny Penny", system-ui;
   font-weight: 650;
 }
-.card{
+.weapon-element{
   transition: transform 0.25s ease;
   cursor: pointer;
 }
-.card:hover{
+.weapon-element:hover{
   outline: 3px solid rgb(255, 196, 123);
   transform: scale(1.02, 1.02);
 }
 
-.card-title{
+.weapon-element-title{
   font-weight: 700;
   font-family: "Poetsen One", sans-serif;
 }

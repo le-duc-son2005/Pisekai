@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    padding: 0 15px;
+}
+.nav-link{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000;
+    border-radius: 10px;
+}
+.nav-link:hover, .nav-link:focus{
+    color: white;
+    background-color: #ffcc00;
+    border-radius: 10px;
+}   

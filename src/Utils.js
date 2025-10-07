@@ -1,22 +1,25 @@
-export function autoChangeRarityColor(rarity){
-    switch (rarity.toLowerCase()){
-        
-        case 'uncommon':
-            return 'gray';
-        case 'rare':
-            return 'blue';
-        case 'epic':
-            return 'purple';
-        default:
-            return 'black';
-    }
+
+import { useRef, useEffect, useState } from 'react';
+
+export function autoChangeRarityColor(rarity) {
+  switch (rarity.toLowerCase()) {
+
+    case 'uncommon':
+      return 'gray';
+    case 'rare':
+      return 'blue';
+    case 'epic':
+      return 'purple';
+    default:
+      return 'black';
+  }
 }
 
 let rainInterval; // lưu id của setInterval
 
 export function createRaindrop(container) {
   const raindrop = document.createElement("img");
-  raindrop.src = "/image/volcanicAsh.png"; 
+  raindrop.src = "/image/volcanicAsh.png";
   raindrop.classList.add("raindrop");
 
   // Vị trí & tốc độ ngẫu nhiên
@@ -44,3 +47,28 @@ export function stopRain() {
   }
 }
 
+/**
+ * @returns {[ref, boolean]} 
+ */
+export function useIntersectionObserver() {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false); 
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // Tạo observer mặc định (threshold = 0.1, rootMargin = 0)
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.unobserve(element); 
+      }
+    });
+
+    observer.observe(element);
+
+    return () => observer.unobserve(element);
+  }, []);
+
+  return [ref, isVisible];
+}
