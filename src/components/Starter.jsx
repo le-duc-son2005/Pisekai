@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import '../style/home.css';
+import '../style/Starter.css';
 import { useNavigate } from "react-router-dom";
 import { startRain, stopRain } from "../Utils.js";
 
-const Home = () => {
+const Starter = () => {
   const navigate = useNavigate();
    useEffect(() => {
     const container = document.body; 
@@ -20,7 +20,7 @@ const Home = () => {
       <div className="rain"></div>
       <div className="container-fluid home-container" >
         <h1 className="title">PiseKai</h1>
-        <button className="start-button" onClick={() => navigate("/weapons")}>Get Start</button>
+        <button className="start-button" onClick={() => navigate("/Home")}>Get Start</button>
         <div className="description">
           Khám phá thế giới pixel đầy màu sắc với những cuộc phiêu lưu hấp dẫn! Hãy sẵn sàng để chiến đấu, thu thập và trở thành huyền thoại trong Pixel Adventure.
         </div>
@@ -29,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Starter;
