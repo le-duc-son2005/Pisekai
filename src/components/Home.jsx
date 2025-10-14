@@ -87,7 +87,7 @@ const Home = () => {
                 </Col>
 
                 <Col md={3} className="text-center mb-5 mt-auto">
-                    <Button className="trans-market-page-btn fw-bold ">
+                    <Button className="trans-market-page-btn fw-bold " onClick={() => navigate("/Leaderboard")}>
                         Go to Market <GiBottomRight3dArrow />
                     </Button>
                 </Col>

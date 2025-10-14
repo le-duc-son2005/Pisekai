@@ -15,6 +15,14 @@ export function autoChangeRarityColor(rarity) {
   }
 }
 
+
+export const getStatVariant = (value) => {
+  if (value < 40) return "danger";
+  if (value < 60) return "warning";
+  return "success";
+};
+
+
 let rainInterval; // lưu id của setInterval
 
 export function createRaindrop(container) {
