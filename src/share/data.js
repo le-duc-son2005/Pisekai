@@ -128,3 +128,40 @@ export const topPlayers = [
   { id: 4, name: 'EVA RAINA', score: 9710, image: 'https://i.pinimg.com/736x/32/17/5c/32175cff8a5524145ed04a4a30c924fd.jpg' },
   { id: 5, name: 'ROBIN CLOTH', score: 9600, image:' https://i.pinimg.com/736x/13/d5/99/13d599b1d20fb60c5d5d92239785140c.jpg' },
 ];
+export const characters = [
+  {
+    id: 1,
+    name: "Mage",
+    img: require("../asserts/Mage.gif"),
+    stats: { HP: 55, SPEED: 75, DAMAGE: 85, ARMOR: 35 },
+    buff: "+20% magic penetration",
+  },
+  {
+    id: 2,
+    name: "Tanker",
+    img: require("../asserts/Tanker.gif"),
+    stats: { HP: 90, SPEED: 30, DAMAGE: 50, ARMOR: 80 },
+    buff: "+10% damage reduction",
+  },
+  {
+    id: 3,
+    name: "Fighter",
+    img: require("../asserts/Fighter.gif"),
+    stats: { HP: 70, SPEED: 50, DAMAGE: 65, ARMOR: 65 },
+    buff: "+15% crit chance on first hit ",
+  },
+  {
+    id: 4,
+    name: "Assassin",
+    img: require("../asserts/Assasin.gif"),
+    stats: { HP: 55, SPEED: 90, DAMAGE: 80, ARMOR: 25 },
+    buff: "+15% lifesteal",
+  },
+  {
+    id: 5,
+    name: "Archer",
+    img: require("../asserts/Archer.gif"),
+    stats: { HP: 75, SPEED: 70, DAMAGE: 60, ARMOR: 45 },
+    buff: "+25% crit damage",
+  },
+];
