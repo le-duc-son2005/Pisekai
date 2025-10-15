@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import '../style/Home.css';
+import '../style/home.css';
 import {  features, topPlayers } from '../share/data.js';
 import { GiBottomRight3dArrow } from "react-icons/gi";
 import { useIntersectionObserver } from '../Utils.js';
@@ -87,7 +87,7 @@ const Home = () => {
                 </Col>
 
                 <Col md={3} className="text-center mb-5 mt-auto">
-                    <Button className="trans-market-page-btn fw-bold " onClick={() => navigate("/Leaderboard")}>
+                    <Button className="trans-market-page-btn fw-bold " onClick={() => navigate("/Marketplace")}>
                         Go to Market <GiBottomRight3dArrow />
                     </Button>
                 </Col>

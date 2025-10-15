@@ -10,14 +10,14 @@ import Store from './components/Store.jsx';
 import Leaderboard from './components/LeaderBoard.jsx';
 import Home from './components/Home.jsx';
 import Footer from './components/Footer.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   
   return (
     <div className="App">
+      <AuthProvider>  
       <Router>
-
         <Routes>
           <Route path="/" element={<Starter />} />
           <Route path="/Home" element={
@@ -64,8 +64,8 @@ function App() {
           } />
           
         </Routes>
-
       </Router> 
+      </AuthProvider>  
       {/* <Test /> */}
     </div>
   );
