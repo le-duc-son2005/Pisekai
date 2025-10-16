@@ -1,0 +1,100 @@
+/* Marketplace page styles */
+.market-page {
+    min-height: 100vh;
+    background: #ffffff; /* white theme */
+}
+
+.market-title {
+    font-family: 'Press Start 2P', cursive;
+    color: #7c1f91; /* restore old purple color */
+    text-shadow: 2px 2px 4px #000; /* keep old shadow */
+    margin: 10px 0 20px;
+    text-align: center;
+}
+
+/* Form */
+.market-form .form-label {
+    color: #333;
+}
+
+/* Cards */
+.market-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: #ffffff; /* white card */
+    color: #212529; /* default text */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.market-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12); /* shadow only */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.market-card-title {
+    font-weight: 700;
+    font-family: "Poetsen One", sans-serif;
+}
+
+.market-card-img-wrap {
+    position: relative;
+}
+
+.market-card-img {
+    height: 180px;
+    object-fit: contain;
+    padding: 8px;
+    background: transparent; /* no dark gradient behind image */
+}
+
+.sold-badge {
+    position: absolute;
+    top: 10px;
+    left: -12px;
+    background: #ff4757;
+    color: white;
+    padding: 4px 10px;
+    font-weight: 800;
+    transform: rotate(-12deg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.seller-badge {
+    background-color: #f8f9fa !important; /* light badge */
+    color: #212529 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.price-badge {
+    font-size: 0.95rem;
+}
+
+.rarity-label {
+    font-family: "Pixelify Sans", monospace;
+    color: #6c757d; /* neutral label */
+}
+
+.rarity-value {
+    font-family: "Poetsen One", sans-serif;
+}
+
+/* Toolbar and actions */
+.market-toolbar { margin-bottom: 10px; }
+.market-price { font-weight: 800; color: #f0b90b; }
+.market-buy-btn {
+    font-weight: 700;
+    background-color: #ffffff;
+    color: #212529;
+    border: 1px solid rgba(0,0,0,0.15);
+}
+.market-buy-btn:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    
+}
+
+/* Helpers for Marketplace toolbar and actions */
+.market-toolbar { margin-bottom: 10px; }
+.market-price { font-weight: 800; color: #f0b90b; }
+.market-buy-btn { font-weight: 700; }
