@@ -1,0 +1,316 @@
+/* Simple handcrafted slide-out panel with a tiny touch of polish */
+.slide-panel {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1050;
+}
+
+.slide-panel.open {
+    pointer-events: auto;
+}
+
+/* Backdrop */
+.panel-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .3);
+    opacity: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    transition: opacity .25s ease;
+}
+
+.slide-panel.open .panel-backdrop {
+    opacity: 1;
+}
+
+/* Drawer */
+.panel-body {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: min(92vw, 360px);
+    background: #1b1c20;
+    color: #fff;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, .35);
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-panel.open .panel-body {
+    transform: translateX(0);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    background: transparent;
+}
+
+.panel-title {
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    font-size: 14px;
+    letter-spacing: .5px;
+    margin: 0;
+}
+
+.panel-close {
+    background: #0f1014;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .12);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.panel-close:hover {
+    background: #12131a;
+}
+
+.panel-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px 12px;
+    gap: 8px;
+}
+
+.panel-tab {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    background: #191a20;
+    color: #c9d1d9;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.panel-tab.active {
+    background: linear-gradient(135deg, #ffb703, #fb8500);
+    color: #111;
+    border-color: transparent;
+}
+
+.panel-content {
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.form {
+    display: grid;
+    gap: 12px;
+}
+
+.label {
+    font-size: 12px;
+    opacity: .9;
+    display: grid;
+    gap: 6px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #0f1115;
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: #fff;
+}
+
+.primary-btn {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: none;
+    color: #111;
+    background: linear-gradient(135deg, #ffd166, #ef476f);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.error {
+    color: #ff6b6b;
+    font-size: 12px;
+}
+
+.success {
+    color: #51cf66;
+    font-size: 12px;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* push stats to the right */
+    gap: 12px;
+    background: #171821;
+    border: 1px solid rgba(255, 255, 255, .06);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.user-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #23242f;
+    display: grid;
+    place-items: center;
+}
+
+.username {
+    font-weight: 800;
+}
+
+.user-sub {
+    opacity: .7;
+    font-size: 12px;
+}
+
+/* Gold/Gems row under username */
+.user-stats {
+    display: flex;
+    gap: 10px;
+}
+
+.user-stats .stat {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: #1b1c28;
+}
+
+.user-stats .stat.gold {
+    border-color: rgba(255, 215, 0, .35);
+    background: linear-gradient(180deg, #2a2412, #1b1810);
+}
+
+.user-stats .stat.gems {
+    border-color: rgba(0, 255, 255, .25);
+    background: linear-gradient(180deg, #1a2030, #121722);
+}
+
+.user-menu {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+/* Wallet row below user card */
+.wallet-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 2px 4px 2px;
+}
+
+.wallet-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    width: 100%;
+    border-radius: 999px;
+    color: #fff;
+    border: 1.5px solid rgba(255, 255, 255, .15);
+    background: #14151d;
+}
+
+.wallet-pill.gold {
+    border-color: rgba(255, 215, 0, .4);
+    background: radial-gradient(120% 120% at 10% 10%, rgba(255, 204, 0, .18), rgba(20, 21, 29, 1));
+}
+
+.wallet-pill.gems {
+    border-color: rgba(0, 180, 255, .35);
+    background: radial-gradient(120% 120% at 10% 10%, rgba(0, 140, 255, .14), rgba(20, 21, 29, 1));
+}
+
+.wallet-icon {
+    font-size: 18px;
+    flex: 0 0 auto;
+}
+
+.wallet-value {
+    font-weight: 800;
+    letter-spacing: .5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: clamp(12px, 3.8vw, 18px);
+}
+
+.menu-item {
+    text-align: left;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: #14151d;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #1a1b24;
+}
+
+.menu-item.danger {
+    background: #2a0f12;
+    border-color: rgba(255, 0, 0, .25);
+}
+
+/* Arrow trigger on the right edge (sticks to scrollbar) */
+.panel-trigger {
+    position: fixed;
+    top: 24vh;
+    /* comfortable height; still visible on small screens */
+    right: 0;
+    /* stick to the viewport's right edge */
+    width: 42px;
+    height: 72px;
+    border-radius: 12px 0 0 12px;
+    background: #1b1c20;
+    /* dark gray */
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, .08);
+    z-index: 1060;
+    /* above drawer/backdrop */
+    font-size: 28px;
+    line-height: 1;
+    transition: right .3s ease, filter .2s ease, background .2s ease;
+}
+
+.panel-trigger:hover {
+    filter: brightness(1.08);
+}
+
+.panel-trigger.open {
+    /* optional subtle cue when open */
+    background: #1b1c20;
+}

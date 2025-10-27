@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { characters } from "../share/data.js";
-import { Container, Row, Col, Button, Card, ProgressBar, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, ProgressBar, Form } from "react-bootstrap";
 import { getStatVariant } from "../Utils.js"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
@@ -49,7 +49,7 @@ const Character = ({ show, onClose }) => {
                                     transition: "transform 0.5s ease, opacity 0.5s ease"
                                 }}
                             />
-                            <h3 className="mt-3">{currentChar.name}</h3>
+                            
                         </div>
                     </Col>
 

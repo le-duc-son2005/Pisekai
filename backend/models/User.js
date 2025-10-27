@@ -1,11 +1,24 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const { Schema, Types } = mongoose;
+
+const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  role: { type: String, enum: ["user", "admin"], default: "user" },
+  passwordHash: { type: String, required: true },
+
+  // Game-related attributes
+  role: { type: String, enum: ["player", "user", "admin"], default: "player" },
+  characterId: { type: Types.ObjectId, ref: "Character", default: null },
+  equippedWeapons: [{ type: Types.ObjectId, ref: "Weapon" }],
+  gold: { type: Number, default: 0 },
+  gems: { type: Number, default: 0 },
+  inventoriesId: { type: Types.ObjectId, ref: "Inventory", default: null },
+
+  // Timestamps
+  joinedAt: { type: Date, default: Date.now },
+  lastLogin: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model("User", userSchema, "Users");

@@ -11,6 +11,7 @@ import Leaderboard from './components/LeaderBoard.jsx';
 import Home from './components/Home.jsx';
 import Footer from './components/Footer.jsx';
 import { AuthProvider } from "./context/AuthContext";
+import GlobalPanel from './components/GlobalPanel.jsx';
 
 function App() {
   
@@ -19,12 +20,18 @@ function App() {
       <AuthProvider>  
       <Router>
         <Routes>
-          <Route path="/" element={<Starter />} />
+          <Route path="/" element={
+            <>
+              <Starter />
+              
+            </>
+          } />
           <Route path="/Home" element={
             <>
               <Header />
               <Home />
               <Footer />
+              <GlobalPanel />
             </>
           } />
           <Route path="/Marketplace" element={
@@ -32,6 +39,7 @@ function App() {
               <Header />
               <Marketplace />
               <Footer />
+              <GlobalPanel />
             </>
           } />
           <Route path="/Store" element={
@@ -39,6 +47,7 @@ function App() {
               <Header />
               <Store />
               <Footer />
+              <GlobalPanel />
             </>
           } />
           <Route path="/Character" element={
@@ -53,6 +62,7 @@ function App() {
               <Header />
               <WeaponList />
               <Footer />
+              <GlobalPanel />
             </>
           } />
           <Route path="/Leaderboard" element={
@@ -60,6 +70,7 @@ function App() {
               <Header />
               <Leaderboard />
               <Footer />
+              <GlobalPanel />
             </>
           } />
           

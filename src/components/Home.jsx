@@ -4,9 +4,11 @@ import '../style/home.css';
 import {  features, topPlayers } from '../share/data.js';
 import { GiBottomRight3dArrow } from "react-icons/gi";
 import { useIntersectionObserver } from '../Utils.js';
+ 
 const Home = () => {
     const [containerRef, isRevealed] = useIntersectionObserver();
     const navigate = useNavigate();
+    // Panel is global; nothing to manage here
     return (
         <Container fluid className="homee-container">
             <Row className="align-items-center introduction-section">
@@ -22,7 +24,7 @@ const Home = () => {
                         <Button className="rounded-pill px-4 fw-bold download-btn">DOWNLOAD</Button>
                     </div>
                 </Col>
-                <Col md={6} className='d-flex justify-content-center'>
+                                <Col md={6} className='d-flex justify-content-center position-relative'>
                     <div className="image-box d-flex justify-content-center align-items-center">
                         <img
                             src={require('../asserts/Bg-home.jpg')}
@@ -32,6 +34,7 @@ const Home = () => {
                     </div>
                 </Col>
             </Row>
+
 
             <Row className="text-center mt-5 features-section">
                 {features.map((feature, index) => (
