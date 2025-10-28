@@ -58,6 +58,14 @@
   background-color: rgba(70, 70, 70, 1);
 }
 
+.character-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000;
+    border-radius: 10px;
+}
 
 .character-info {
   background: rgba(20, 20, 20, 0.85);
@@ -89,3 +97,4 @@
     height: 24px;
   }
 }
+
