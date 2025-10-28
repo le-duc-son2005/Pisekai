@@ -1,10 +1,34 @@
+import React, { useContext } from 'react';
 import { weapons } from '../share/data.js';
 import { autoChangeRarityColor } from '../Utils.js';
 import { Container, Row, Col, Card } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/weaponList.css';
+import { AuthContext } from "../context/AuthContext";
 
 const WeaponList = () => {
+    const { user } = useContext(AuthContext);
+
+    if (!user) {
+        return (
+            <div className="weapon-page">
+                <Container className="my-5 text-center inven-title">
+                    <h4 className="mb-4">Please login to view Inventory</h4>
+                    <div className="d-flex justify-content-center">
+                        <button
+                            className="auth-open-btn"
+                            onClick={() => {
+                                window.dispatchEvent(new CustomEvent('open-panel', { detail: { tab: 'login' } }));
+                            }}
+                        >
+                            Login / Register
+                        </button>
+                    </div>
+                </Container>
+            </div>
+        );
+    }
+
     return (
         <div className="weapon-page">
             <Container className="my-4">

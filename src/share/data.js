@@ -134,7 +134,7 @@ export const characters = [
     name: "Mage",
     img: require("../asserts/Mage.gif"),
     stats: { HP: 55, SPEED: 75, DAMAGE: 85, ARMOR: 35 },
-    buff: "+20% magic penetration",
+    buff: "+20% armor penetration",
   },
   {
     id: 2,

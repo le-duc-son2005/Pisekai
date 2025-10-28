@@ -107,7 +107,7 @@ export const getMe = async (req, res) => {
     if (!userId || !Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ message: "Token không hợp lệ" });
     }
-    const user = await User.findById(userId).select("username email role gold gems characterId");
+  const user = await User.findById(userId).select("username email role gold gems characterId avatar");
     if (!user) return res.status(404).json({ message: "Không tìm thấy user" });
     res.json({
       username: user.username,
@@ -116,6 +116,7 @@ export const getMe = async (req, res) => {
       gold: user.gold,
       gems: user.gems,
       characterId: user.characterId,
+      avatar: user.avatar,
     });
   } catch (err) {
     res.status(500).json({ message: "Lỗi server", error: err.message });

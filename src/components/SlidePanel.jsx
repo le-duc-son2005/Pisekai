@@ -9,7 +9,7 @@ import { FaCoins } from "react-icons/fa";
 import { FaGem } from "react-icons/fa";
 
 // Right-side slide-out panel with 2 modes: auth forms or user menu
-const SlidePanel = ({ open, onClose }) => {
+const SlidePanel = ({ open, onClose, externalTab }) => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const [tab, setTab] = useState("login");
@@ -18,6 +18,11 @@ const SlidePanel = ({ open, onClose }) => {
   useEffect(() => {
     if (open && !user) setTab("login");
   }, [open, user]);
+
+  // React to external requests to switch tab (e.g., open-panel event)
+  useEffect(() => {
+    if (externalTab) setTab(externalTab);
+  }, [externalTab]);
 
   // format big numbers so they don't overflow (e.g., 2.2K, 3.4M)
   const fmtCompact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
@@ -82,7 +87,16 @@ const SlidePanel = ({ open, onClose }) => {
             <nav className="user-menu">
               <button className="menu-item" onClick={() => { navigate("/Character"); onClose(); }}>Profile</button>
               <button className="menu-item" onClick={() => alert("Recharge đang cập nhật")}>Recharge</button>
-              <button className="menu-item danger" onClick={logout}>Logout</button>
+              <button
+                className="menu-item danger"
+                onClick={() => {
+                  logout();
+                  onClose?.();
+                  navigate("/Home");
+                }}
+              >
+                Logout
+              </button>
             </nav>
           </div>
         )}

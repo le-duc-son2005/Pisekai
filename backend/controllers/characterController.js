@@ -5,7 +5,7 @@ import User from "../models/User.js";
 const CLASS_CATALOG = {
   Mage: {
     stats: { hp: 55, speed: 75, damage: 85, armor: 35 },
-    buff: "+20% magic penetration",
+    buff: "+20% armor penetration",
   },
   Tanker: {
     stats: { hp: 90, speed: 30, damage: 50, armor: 80 },
@@ -47,8 +47,8 @@ export const selectCharacter = async (req, res) => {
     const payload = {
       userId,
       class: className,
-      level: null,
-      exp: null,
+      level: 1,
+      exp: 0,
       stats: { ...def.stats, buff: def.buff },
       activeQuests: null,
       completedQuests: null,

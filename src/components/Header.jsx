@@ -6,7 +6,7 @@ import '../style/Header.css';
 const Header = () => {
     return (
         <>
-            <Navbar expand="lg" className='header' bg-light>
+            <Navbar expand="lg" className='header' bg="light">
                 <Container className="d-flex justify-content-center align-items-center header-container">
                     <Nav className='gap-5 pb-3 header-title'>
                         <Nav.Link as={Link} to="/Home">Home</Nav.Link>

@@ -5,8 +5,8 @@ const { Schema, Types } = mongoose;
 const characterSchema = new Schema({
   userId: { type: Types.ObjectId, ref: "User", required: true, unique: true },
   class: { type: String, required: true },
-  level: { type: Number, default: null },
-  exp: { type: Number, default: null },
+  level: { type: Number, default: 1 },
+  exp: { type: Number, default: 0 },
   stats: {
     hp: { type: Number, required: true },
     speed: { type: Number, required: true },

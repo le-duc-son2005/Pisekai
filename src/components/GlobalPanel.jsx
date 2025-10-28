@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SlidePanel from "./SlidePanel";
 import "../style/panel.css";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -7,7 +7,19 @@ import { FaAngleRight } from "react-icons/fa6";
 // A single global trigger + drawer used across pages
 const GlobalPanel = () => {
   const [open, setOpen] = useState(false);
+  const [externalTab, setExternalTab] = useState(null);
   const toggle = () => setOpen(v => !v);
+
+  // Allow other components to open the panel and choose tab via a custom event
+  useEffect(() => {
+    const handler = (e) => {
+      const tab = e?.detail?.tab || "login";
+      setExternalTab(tab);
+      setOpen(true);
+    };
+    window.addEventListener("open-panel", handler);
+    return () => window.removeEventListener("open-panel", handler);
+  }, []);
 
   return (
     <>
@@ -22,7 +34,7 @@ const GlobalPanel = () => {
       </button>
 
       {/* Slide-out panel */}
-      <SlidePanel open={open} onClose={() => setOpen(false)} />
+      <SlidePanel open={open} onClose={() => setOpen(false)} externalTab={externalTab} />
     </>
   );
 };
