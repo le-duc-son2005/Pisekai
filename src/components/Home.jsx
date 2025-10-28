@@ -42,7 +42,11 @@ const Home = () => {
                         <Card className="h-100 feature-card "
                             onClick={() => navigate(feature.path)}
                             style={{ cursor: 'pointer' }}>
-                            <Card.Img variant='top' src={feature.img} className="feature-image mx-auto mt-3" />
+                                                        <Card.Img
+                                                            variant='top'
+                                                            src={feature.img}
+                                                            className={`feature-image mx-auto mt-3 ${feature.title === 'Quest' ? 'feature-image-horizontal' : ''}`}
+                                                        />
                             <Card.Body>
                                 <Card.Title className='feature-title'>{feature.title}</Card.Title>
                             </Card.Body>

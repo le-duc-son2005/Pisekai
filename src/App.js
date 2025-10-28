@@ -8,6 +8,7 @@ import Marketplace from './components/Marketplace.jsx';
 import CharacterPage from './components/CharacterPage.jsx';
 import Store from './components/Store.jsx';
 import Leaderboard from './components/LeaderBoard.jsx';
+import Quest from './components/Quest.jsx';
 import Home from './components/Home.jsx';
 import Footer from './components/Footer.jsx';
 import { AuthProvider } from "./context/AuthContext";
@@ -70,6 +71,14 @@ function App() {
             <>
               <Header />
               <Leaderboard />
+              <Footer />
+              <GlobalPanel />
+            </>
+          } />
+          <Route path="/Quest" element={
+            <>
+              <Header />
+              <Quest />
               <Footer />
               <GlobalPanel />
             </>

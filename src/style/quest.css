@@ -1,0 +1,35 @@
+.quest-filter-btn {
+  min-width: 110px;
+}
+
+.quest-card {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #004cff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.quest-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000;
+    border-radius: 10px;
+}
+.quest-type-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.quest-type-badge.type-daily { background: #ffd166; }
+.quest-type-badge.type-main { background: #8ecae6; }
+.quest-type-badge.type-enchange { background: #9100e6; }
+.quest-type-badge.type-enhance { background: #cdb4db; }
+.quest-type-badge.type-event { background: #bde0fe; }
+.quest-type-badge.type-special { background: #ffadad; }
+.quest-type-badge.type-newbie { background: #b9fbc0; }
+

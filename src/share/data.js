@@ -111,7 +111,7 @@ export const weapons = [
     { title: "Battle Pass", img: require("../asserts/Battlepass-Iconic.png"), path: "/Battle-Pass" },
     { title: "World-Boss", img: require("../asserts/Boss-Iconic.png"), path: "/Boss" },
     { title: "Enchantment", img: require("../asserts/Enchantment-Iconic.png"), path: "/Enchantment" },
-    { title: "Friend", img: require("../asserts/Friend-Iconic.png"), path: "/Friends" }, 
+   { title: "Quest", img: require("../asserts/Scroll.png"), path: "/Quest" }, 
   ];
 export const marketData = [
     { player: "Người chơi A", img: require("../asserts/Battlepass-Iconic.png"), weapon: "Sword of Shadows", price: 16000 },

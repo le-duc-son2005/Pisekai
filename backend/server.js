@@ -7,6 +7,7 @@ import marketRoutes from "./routes/marketRoutes.js";
 import inventoryRoutes from "./routes/inventoryRoutes.js";
 import characterRoutes from "./routes/characterRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import questRoutes from "./routes/questRoutes.js";
 
 
 
@@ -23,6 +24,7 @@ app.use("/api/market", marketRoutes);
 app.use("/api/inventory", inventoryRoutes);
 app.use("/api/characters", characterRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/quests", questRoutes);
 
 app.get('/', (req, res) => {
   res.send('Backend is running...');

@@ -85,6 +85,11 @@
     margin: auto;
 }
 
+/* Make Quest icon horizontal only */
+.feature-image-horizontal {
+    transform: rotate(90deg);
+}
+
 
 
 /*------------------------- LEADERBOARD SECTION --------------------------*/
