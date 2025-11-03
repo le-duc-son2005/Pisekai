@@ -15,8 +15,8 @@ const LoginForm = ({ onDone }) => {
     setLoading(true);
     try {
   const { data } = await API.post("/auth/login", { email, password });
-  // Save token and set user context (include gold/gems)
-  login({ username: data.username, role: data.role, email: data.email, gold: data.gold, gems: data.gems }, data.token);
+  // Save token and set user context (include gold/gems/exp)
+  login({ username: data.username, role: data.role, email: data.email, exp: data.exp, gold: data.gold, gems: data.gems }, data.token);
       onDone?.();
     } catch (err) {
       setError(err?.response?.data?.message || "Login failed");

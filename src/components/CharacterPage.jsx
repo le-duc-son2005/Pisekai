@@ -60,6 +60,19 @@ const CharacterPage = () => {
     load();
   }, [mode]);
 
+  // Listen for global character-refresh event to update EXP/Level live
+  useEffect(() => {
+    const handler = async () => {
+      if (mode !== "profile") return;
+      try {
+        const { data } = await API.get("/characters/me");
+        setCharacter(data);
+      } catch {}
+    };
+    window.addEventListener('character-refresh', handler);
+    return () => window.removeEventListener('character-refresh', handler);
+  }, [mode]);
+
   const handleCloseSelector = async () => {
     // After successful selection, refresh user and fetch character; then show success
     try {

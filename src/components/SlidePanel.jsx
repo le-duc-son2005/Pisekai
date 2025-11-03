@@ -7,6 +7,7 @@ import "../style/panel.css";
 import { FaUser } from "react-icons/fa";
 import { FaCoins } from "react-icons/fa";
 import { FaGem } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 // Right-side slide-out panel with 2 modes: auth forms or user menu
 const SlidePanel = ({ open, onClose, externalTab }) => {
@@ -53,7 +54,7 @@ const SlidePanel = ({ open, onClose, externalTab }) => {
             </div>
             <div className="panel-content">
               {tab === "login" ? (
-                <LoginForm onDone={onClose} />
+                <LoginForm onDone={() => { onClose?.(); navigate("/Home"); }} />
               ) : (
                 <RegisterForm onDone={() => setTab("login")} />
               )}
@@ -71,8 +72,12 @@ const SlidePanel = ({ open, onClose, externalTab }) => {
               </div>
             </div>
 
-            {(user.gold !== undefined || user.gems !== undefined) && (
+            {(user.level !== undefined || user.gold !== undefined || user.gems !== undefined) && (
               <div className="wallet-row">
+                <div className="wallet-pill" title="Level">
+                  <span className="wallet-icon" aria-hidden><FaStar/></span>
+                  <span className="wallet-value">{fmtCompact.format(user.level ?? 1)}</span>
+                </div>
                 <div className="wallet-pill gold" title="Gold">
                   <span className="wallet-icon" aria-hidden><FaCoins/></span>
                   <span className="wallet-value">{fmtCompact.format(user.gold ?? 0)}</span>

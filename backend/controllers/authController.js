@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/User.js";
+import Character from "../models/Character.js";
 import { Types } from "mongoose";
 
 dotenv.config();
@@ -50,6 +51,7 @@ export const registerUser = async (req, res) => {
         username: user.username,
         email: user.email,
         role: user.role,
+        exp: user.exp,
         gold: user.gold,
         gems: user.gems,
         characterId: user.characterId,
@@ -85,6 +87,12 @@ export const loginUser = async (req, res) => {
       { expiresIn: "1d" }
     );
 
+    // Lấy thông tin nhân vật (level/exp) nếu có
+    let char = null;
+    try {
+      char = await Character.findOne({ userId: user._id }).select("level exp").lean();
+    } catch (_) {}
+
     // Trả thêm thông tin để FE hiển thị ngay sau khi đăng nhập
     res.json({
       message: "Đăng nhập thành công",
@@ -92,6 +100,8 @@ export const loginUser = async (req, res) => {
       role: user.role,
       username: user.username,
       email: user.email,
+      level: char?.level ?? undefined,
+      exp: char?.exp ?? user.exp,
       gold: user.gold,
       gems: user.gems,
     });
@@ -107,12 +117,18 @@ export const getMe = async (req, res) => {
     if (!userId || !Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ message: "Token không hợp lệ" });
     }
-  const user = await User.findById(userId).select("username email role gold gems characterId avatar");
+  const user = await User.findById(userId).select("username email role exp gold gems characterId avatar");
     if (!user) return res.status(404).json({ message: "Không tìm thấy user" });
+    let char = null;
+    try {
+      char = await Character.findOne({ userId: user._id }).select("level exp").lean();
+    } catch (_) {}
     res.json({
       username: user.username,
       email: user.email,
       role: user.role,
+      level: char?.level ?? undefined,
+      exp: char?.exp ?? user.exp,
       gold: user.gold,
       gems: user.gems,
       characterId: user.characterId,

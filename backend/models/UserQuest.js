@@ -5,6 +5,7 @@ const UserQuestSchema = new mongoose.Schema(
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", index: true, required: true },
     questId: { type: Number, index: true, required: true },
     status: { type: String, enum: ["completed"], required: true },
+    claimed: { type: Boolean, default: false },
     completedAt: { type: Date },
   },
   { timestamps: true }

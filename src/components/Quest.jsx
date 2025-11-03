@@ -21,6 +21,20 @@ const Quest = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [quests, setQuests] = useState([]);
+  const [progressMap, setProgressMap] = useState({}); // { [questId]: { status, claimed } }
+
+  const loadProgress = async () => {
+    try {
+      const { data } = await API.get('/quests/progress');
+      const map = {};
+      (data || []).forEach((p) => { map[p.questId] = { status: p.status, claimed: !!p.claimed }; });
+      setProgressMap(map);
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('[QUEST PROGRESS ERROR]', e?.response?.data || e.message);
+      setProgressMap({});
+    }
+  };
 
   const fetchQuests = async (type) => {
     setLoading(true);
@@ -35,6 +49,7 @@ const Quest = () => {
         const { data } = await API.get(`/quests${q}`);
         setQuests(data || []);
       }
+      await loadProgress();
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error('[QUEST FETCH ERROR]', {
@@ -50,14 +65,9 @@ const Quest = () => {
     }
   };
 
-  // Default to Daily when logged in; otherwise 'all'
+  // On user changes, refetch if current tab requires auth
   useEffect(() => {
-    if (user && activeType === 'all') {
-      setActiveType('daily');
-      return;
-    }
-    // If user state changes while staying on an auth-only tab, refetch
-    if ((activeType === 'daily' || activeType === 'completed')) {
+    if ((activeType === 'daily' || activeType === 'completed') && user) {
       fetchQuests(activeType);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,7 +81,73 @@ const Quest = () => {
 
   const visibleTypes = useMemo(() => TYPES, []);
 
-  // Require login for the entire Quest page
+  // Helpers
+  const isCompleted = (qid) => !!progressMap[qid]?.status && progressMap[qid].status === 'completed';
+  const isClaimed = (qid) => !!progressMap[qid]?.claimed;
+  const isLoginQuest = (q) => typeof q?.name === 'string' && /login|đăng\s*nhập/i.test(q.name) && String(q?.type || '').toLowerCase() === 'daily';
+
+  const { login } = useContext(AuthContext);
+
+  const refreshUser = async () => {
+    try {
+      const { data } = await API.get('/auth/me');
+      login(data);
+      // Notify Character page to refresh exp/level if open
+      window.dispatchEvent(new Event('character-refresh'));
+    } catch {}
+  };
+
+  const claimQuest = async (qid) => {
+    try {
+      await API.post(`/quests/${qid}/claim`);
+      await loadProgress();
+      await refreshUser();
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('[QUEST CLAIM ERROR]', e?.response?.data || e.message);
+      alert(e?.response?.data?.message || 'Claim thất bại');
+    }
+  };
+
+  // For daily login quest: offer a one-click flow even if not yet auto-completed
+  const quickClaimDailyLogin = async (q) => {
+    const idParam = Number(q?.questId) ? Number(q.questId) : q?.questId; // prefer numeric
+    try {
+      if (!isCompleted(q.questId)) {
+        await API.post(`/quests/${idParam}/complete`);
+      }
+      if (!isClaimed(q.questId)) {
+        await API.post(`/quests/${idParam}/claim`);
+      }
+      await loadProgress();
+      await refreshUser();
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('[QUEST QUICK CLAIM LOGIN ERROR]', e?.response?.data || e.message);
+      alert(e?.response?.data?.message || 'Không thể nhận nhiệm vụ đăng nhập');
+    }
+  };
+
+  // Auto-complete daily login quest heuristic: if a daily with name contains 'login' or 'đăng nhập'
+  useEffect(() => {
+    if (!user) return;
+    if (!(activeType === 'daily' || activeType === 'all')) return;
+    const loginQuest = quests.find((q) => typeof q.name === 'string' && /login|đăng\s*nhập/i.test(q.name));
+    if (!loginQuest) return;
+    const qid = loginQuest.questId;
+    const ensureCompleted = async () => {
+      try {
+        if (!isCompleted(qid)) {
+          await API.post(`/quests/${qid}/complete`);
+          await loadProgress();
+        }
+      } catch {}
+    };
+    ensureCompleted();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quests, activeType, user]);
+
+  // Require login for the entire Quest page (place after hooks to satisfy Rules of Hooks)
   if (!user) {
     return (
       <Container className="py-5 text-center quest-title">
@@ -121,7 +197,15 @@ const Quest = () => {
         <div className="text-center text-secondary py-5">Không có nhiệm vụ nào.</div>
       ) : (
         <Row className="g-3">
-          {quests.map((q) => (
+          {[...quests]
+            .sort((a, b) => {
+              // Completed but unclaimed first, then in-progress, then claimed last
+              const ra = isClaimed(a.questId) ? 2 : isCompleted(a.questId) ? 0 : 1;
+              const rb = isClaimed(b.questId) ? 2 : isCompleted(b.questId) ? 0 : 1;
+              if (ra !== rb) return ra - rb;
+              return (a.questId || 0) - (b.questId || 0);
+            })
+            .map((q) => (
             <Col xs={12} md={6} lg={4} key={q.questId}>
               <Card className="quest-card h-100">
                 <Card.Body>
@@ -132,10 +216,41 @@ const Quest = () => {
                   <Card.Text className="text-secondary mb-2">{q.description}</Card.Text>
                   {/* Requirement hidden for cleaner UI */}
                   {q.reward && (
-                    <div className="small text-danger">
-                      Phần thưởng: {typeof q.reward === "object" ? JSON.stringify(q.reward) : String(q.reward)}
+                    <div className="small">
+                      {(() => {
+                        const R = q.reward;
+                        const val = (k) => (typeof R === 'object' && !Array.isArray(R) ? (R[k] ?? R[k.toUpperCase()] ?? R[k.toLowerCase()]) : undefined);
+                        const exp = val('exp') ?? val('xp') ?? val('experience');
+                        const gold = val('gold') ?? val('coins') ?? val('coin');
+                        const gems = val('gems') ?? val('gem');
+                        const item = val('item');
+                        const lines = [];
+                        const toNum = (v) => typeof v === 'number' ? v : (typeof v === 'string' ? (parseInt((v.match(/[-+]?\d+/)||['0'])[0],10)) : 0);
+                        if (exp !== undefined) lines.push(<div key="exp">EXP +{toNum(exp)}</div>);
+                        if (gold !== undefined) lines.push(<div key="gold">Coin +{toNum(gold)}</div>);
+                        if (gems !== undefined) lines.push(<div key="gems">Gems +{toNum(gems)}</div>);
+                        if (item !== undefined) lines.push(<div key="item">Item: {String(item)}</div>);
+                        if (lines.length === 0 && typeof R === 'string') {
+                          // fallback: try parse string like "EXP +50, Coin +50"
+                          const parts = R.split(/[;,]/);
+                          parts.forEach((p, i) => lines.push(<div key={`s${i}`}>{p.trim()}</div>));
+                        }
+                        return lines;
+                      })()}
                     </div>
                   )}
+
+                  <div className="d-flex justify-content-between align-items-center mt-3">
+                    {isClaimed(q.questId) ? (
+                      <span className="badge bg-success">Đã nhận ✓</span>
+                    ) : isCompleted(q.questId) ? (
+                      <Button size="sm" variant="warning" onClick={() => claimQuest(q.questId)}>Claim</Button>
+                    ) : isLoginQuest(q) ? (
+                      <Button size="sm" variant="warning" onClick={() => quickClaimDailyLogin(q)}>Claim</Button>
+                    ) : (
+                      <span className="badge bg-secondary">Đang làm</span>
+                    )}
+                  </div>
                 </Card.Body>
               </Card>
             </Col>

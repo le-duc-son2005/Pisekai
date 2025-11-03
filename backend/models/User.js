@@ -11,6 +11,7 @@ const userSchema = new Schema({
   role: { type: String, enum: ["player", "user", "admin"], default: "player" },
   characterId: { type: Types.ObjectId, ref: "Character", default: null },
   equippedWeapons: [{ type: Types.ObjectId, ref: "Weapon" }],
+  exp: { type: Number, default: 0 },
   gold: { type: Number, default: 0 },
   gems: { type: Number, default: 0 },
   inventoriesId: { type: Types.ObjectId, ref: "Inventory", default: null },
