@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Green Slime",
+    "level": 1,
+    "rarity": "common",
+    "description": "The weakest creature, often found in grasslands.",
+    "rewards": { "exp": 10, "coins": 5, "loot": ["Sticky Gel"] },
+    "stats": { "hp": 90, "attack": 10, "defense": 3, "speed": 2, "critChance": 0.04, "critMult": 1.4, "evade": 0.03 }
+  },
+  {
+    "name": "Cave Spider",
+    "level": 3,
+    "rarity": "common",
+    "description": "Lurks in the dark, waiting for prey.",
+    "rewards": { "exp": 20, "coins": 10, "loot": ["Spider Silk", "Spider Eye"] },
+    "stats": { "hp": 160, "attack": 16, "defense": 6, "speed": 3, "critChance": 0.06, "critMult": 1.45, "evade": 0.05 }
+  },
+  {
+    "name": "Forest Wolf",
+    "level": 5,
+    "rarity": "uncommon",
+    "description": "Fast and dangerous, usually hunts in packs.",
+    "rewards": { "exp": 30, "coins": 20, "loot": ["Wolf Fur", "Wolf Fang"] },
+    "stats": { "hp": 220, "attack": 22, "defense": 9, "speed": 4, "critChance": 0.08, "critMult": 1.5, "evade": 0.07 }
+  },
+  {
+    "name": "Skeleton Warrior",
+    "level": 7,
+    "rarity": "uncommon",
+    "description": "A fallen soldier reanimated by dark magic.",
+    "rewards": { "exp": 45, "coins": 30, "loot": ["Ancient Bone", "Old Armor Piece"] },
+    "stats": { "hp": 280, "attack": 28, "defense": 11, "speed": 4, "critChance": 0.09, "critMult": 1.55, "evade": 0.08 }
+  },
+  {
+    "name": "Village Zombie",
+    "level": 10,
+    "rarity": "rare",
+    "description": "A villager turned into an undead creature by plague.",
+    "rewards": { "exp": 60, "coins": 50, "loot": ["Infected Blood", "Rusty Blade"] },
+    "stats": { "hp": 400, "attack": 34, "defense": 15, "speed": 4, "critChance": 0.1, "critMult": 1.6, "evade": 0.09 }
+  },
+  {
+    "name": "Fire Imp",
+    "level": 12,
+    "rarity": "rare",
+    "description": "A small fire spirit that burns enemies with cursed flames.",
+    "rewards": { "exp": 80, "coins": 60, "loot": ["Spirit Flame", "Ash Dust"] },
+    "stats": { "hp": 480, "attack": 42, "defense": 18, "speed": 5, "critChance": 0.12, "critMult": 1.65, "evade": 0.11, "magic": 20 }
+  },
+  {
+    "name": "Stone Hatchling",
+    "level": 15,
+    "rarity": "epic",
+    "description": "A young dragon born from the heart of the mountain.",
+    "rewards": { "exp": 150, "coins": 100, "loot": ["Dragon Scale", "Magic Ore Core"] },
+    "stats": { "hp": 620, "attack": 50, "defense": 22, "speed": 5, "critChance": 0.13, "critMult": 1.7, "evade": 0.12 }
+  },
+  {
+    "name": "Evil Eye",
+    "level": 18,
+    "rarity": "epic",
+    "description": "A floating eye monster that shoots deadly energy beams.",
+    "rewards": { "exp": 200, "coins": 120, "loot": ["Cursed Crystal"] },
+    "stats": { "hp": 780, "attack": 58, "defense": 26, "speed": 6, "critChance": 0.14, "critMult": 1.75, "evade": 0.13, "magic": 30 }
+  },
+  {
+    "name": "Hell Knight",
+    "level": 25,
+    "rarity": "legendary",
+    "description": "A dark warrior serving the Demon Lord.",
+    "rewards": { "exp": 400, "coins": 250, "loot": ["Hell Sword", "Black Armor"] },
+    "stats": { "hp": 1050, "attack": 72, "defense": 36, "speed": 7, "critChance": 0.16, "critMult": 1.85, "evade": 0.14, "magic": 25 }
+  },
+  {
+    "name": "Ancient Demon Lord",
+    "level": 40,
+    "rarity": "mythic",
+    "description": "An ancient ruler of the underworld, reborn to destroy.",
+    "rewards": { "exp": 1000, "coins": 1000, "loot": ["Ancient Soul", "Demonic Gem"] },
+    "stats": { "hp": 1850, "attack": 110, "defense": 55, "speed": 8, "critChance": 0.18, "critMult": 1.9, "evade": 0.16, "magic": 90 }
+  }
+]

@@ -9,10 +9,13 @@ import CharacterPage from './components/CharacterPage.jsx';
 import Store from './components/Store.jsx';
 import Leaderboard from './components/LeaderBoard.jsx';
 import Quest from './components/Quest.jsx';
+import Battle from './components/Battle.jsx';
 import Home from './components/Home.jsx';
 import Footer from './components/Footer.jsx';
 import { AuthProvider } from "./context/AuthContext";
 import GlobalPanel from './components/GlobalPanel.jsx';
+import BattlePass from './components/BattlePass.jsx';
+import WorldBoss from './components/WorldBoss.jsx';
 
 function App() {
   
@@ -79,6 +82,30 @@ function App() {
             <>
               <Header />
               <Quest />
+              <Footer />
+              <GlobalPanel />
+            </>
+          } />
+          <Route path="/Battle" element={
+            <>
+              <Header />
+              <Battle />
+              <Footer />
+              <GlobalPanel />
+            </>
+          } />
+          <Route path="/Battle-Pass" element={
+            <>
+              <Header />
+              <BattlePass />
+              <Footer />
+              <GlobalPanel />
+            </>
+          } />
+          <Route path="/Boss" element={
+            <>
+              <Header />
+              <WorldBoss />
               <Footer />
               <GlobalPanel />
             </>

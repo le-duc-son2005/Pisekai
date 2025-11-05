@@ -108,9 +108,9 @@ export const weapons = [
 ];
 
  export const features = [
-    { title: "Battle Pass", img: require("../asserts/Battlepass-Iconic.png"), path: "/Battle-Pass" },
-    { title: "World-Boss", img: require("../asserts/Boss-Iconic.png"), path: "/Boss" },
-    { title: "Enchantment", img: require("../asserts/Enchantment-Iconic.png"), path: "/Enchantment" },
+   { title: "Battle", img: require("../asserts/CrossedSwords.png"), path: "/Battle" },
+   { title: "World-Boss", img: require("../asserts/Boss-Iconic.png"), path: "/Boss" },
+   { title: "Battle Pass", img: require("../asserts/Battlepass-Iconic.png"), path: "/Battle-Pass" },
    { title: "Quest", img: require("../asserts/Scroll.png"), path: "/Quest" }, 
   ];
 export const marketData = [

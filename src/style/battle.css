@@ -1,0 +1,102 @@
+.battle-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px #000;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.battle-title .battle-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.5));
+}
+
+/* Battle Result Panel (white theme) */
+.battle-result-modal {
+  background-color: #ffffff;
+  color: #000000;
+}
+.battle-result-modal .modal-content {
+  background-color: #ffffff;
+  color: #000000;
+}
+.battle-result-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+}
+.battle-result-title.victory {
+  color: #28a745; 
+}
+.battle-result-title.lose {
+  color: #dc3545;
+}
+.battle-result-modal .modal-header {
+  border-bottom: 1px solid #e9ecef;
+}
+.battle-result-modal .modal-footer {
+  border-top: 1px solid #e9ecef;
+}
+.battle-result-log {
+  max-height: 340px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+}
+.battle-result-line {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #000000;
+  margin-bottom: 6px;
+  animation: fadeInLog 0.2s ease-in;
+}
+.battle-result-line .turn {
+  font-weight: 600;
+  color: #000000; /* turn text black */
+  margin-right: 6px;
+}
+.battle-result-line .action {
+  color: #000000; /* action text black */
+  margin-left: 2px;
+}
+.battle-result-line .damage {
+  color: #d9534f; /* red for damage */
+  font-weight: 600;
+  margin-left: 6px;
+}
+.battle-result-line .remain {
+  color: #6c757d; /* gray for remaining HP */
+  margin-left: 6px;
+}
+
+@keyframes fadeInLog {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rewards styling */
+.battle-reward {
+  color: #FFCC00; /* yellow */
+}
+.battle-reward-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.15rem; /* bigger font */
+  font-weight: 700;
+  color: #FFCC00;
+  margin-bottom: 8px;
+}
+.battle-reward-list {
+  color: #FFCC00;
+}
+.battle-reward-item {
+  color: #FFCC00;
+  font-weight: 600;
+}
