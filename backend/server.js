@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import marketRoutes from "./routes/marketRoutes.js";
 import inventoryRoutes from "./routes/inventoryRoutes.js";
+import rechargeRoutes from "./routes/rechargeRoutes.js";
 
 
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/market", marketRoutes);
 app.use("/api/inventory", inventoryRoutes);
+app.use("/api/recharge", rechargeRoutes);
 
 app.get('/', (req, res) => {
   res.send('Backend is running...');

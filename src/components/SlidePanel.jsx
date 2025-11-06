@@ -6,11 +6,14 @@ import "../style/panel.css";
 import { FaUser } from "react-icons/fa";
 import { FaCoins } from "react-icons/fa";
 import { FaGem } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 // Right-side slide-out panel with 2 modes: auth forms or user menu
 const SlidePanel = ({ open, onClose }) => {
   const { user, logout } = useContext(AuthContext);
   const [tab, setTab] = useState("login");
+  const navigate = useNavigate();
 
   // Reset to login view when panel is opened without user
   useEffect(() => {
@@ -79,7 +82,7 @@ const SlidePanel = ({ open, onClose }) => {
 
             <nav className="user-menu">
               <button className="menu-item" onClick={() => alert("Profile đang cập nhật")}>Profile</button>
-              <button className="menu-item" onClick={() => alert("Recharge đang cập nhật")}>Recharge</button>
+              <button className="menu-item" onClick={() => { navigate("/recharge"); onClose && onClose(); }}>Recharge</button>
               <button className="menu-item danger" onClick={logout}>Logout</button>
             </nav>
           </div>

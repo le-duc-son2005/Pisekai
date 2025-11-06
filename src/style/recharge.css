@@ -1,0 +1,240 @@
+/* Simple Recharge page */
+.recharge-page {
+    background-image: url("../asserts/bg_recharge.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 24px;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.back-btn {
+    font-weight: bold;
+    border: 1px solid rgba(128, 128, 128, 0.652);
+    color: #ffffff;
+    background: #171821;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    align-items: center;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.08);
+
+}
+
+.recharge-title {
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    font-size: 18px;
+    margin: 8px 0 16px;
+}
+
+.recharge-error {
+    color: #ff6b6b;
+    margin-bottom: 12px;
+}
+
+.pack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.pack-card {
+    background: #171821;
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 16px;
+    padding: 14px;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    transition: transform .15s ease, filter .15s ease;
+}
+
+.pack-card:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.pack-image {
+    height: 200px;
+    border-radius: 12px;
+    background: #0f1115;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.pack-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.img-placeholder {
+    width: 60px;
+    height: 60px;
+    background: #222;
+    border-radius: 50%;
+}
+
+.pack-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pack-price {
+    font-weight: 800;
+}
+
+.pack-gems {
+    opacity: .85;
+}
+
+/* Responsive fallbacks: 2 columns on medium, 1 column on small */
+@media (max-width: 1024px) {
+    .pack-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .pack-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.skeleton-card {
+    width: 240px;
+    height: 200px;
+    background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 12px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Result (success / fail) pages */
+.result-page {
+    /* Fill entire viewport to avoid white strip at bottom */
+    position: fixed;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    background: linear-gradient(180deg, rgba(8, 10, 15, 0.6), rgba(12, 14, 20, 0.8));
+    color: #fff;
+    z-index: 9999;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.result-card {
+    max-width: 560px;
+    width: 100%;
+    background: rgba(23, 24, 33, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+    /* prevent white area by allowing the card to scroll if viewport is small */
+    max-height: calc(100vh - 96px);
+    overflow: auto;
+}
+
+.result-icon {
+    color: #ffcc00;
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.result-title {
+    font-size: 22px;
+    margin: 6px 0 8px;
+}
+
+.result-message {
+    color: #d0d6df;
+    margin-bottom: 12px;
+}
+
+.result-gems {
+    font-size: 20px;
+    color: #ffd166;
+    margin: 8px 0 12px;
+}
+
+.gem {
+    margin-left: 6px
+}
+
+.order-code {
+    color: #cbd5e1;
+    margin-bottom: 12px;
+}
+
+.result-note {
+    color: #aab3bf;
+    margin-bottom: 12px;
+}
+
+.result-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.homeBack-btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.homeBack-btn {
+    background: linear-gradient(90deg, #4ade80, #06b6d4);
+    color: #071018;
+}
+
+.homeBack-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.result-card.success {
+    border-color: rgba(34, 197, 94, 0.15);
+}
+
+.result-card.fail {
+    border-color: rgba(239, 68, 68, 0.15);
+}
+
+@media (max-width:640px) {
+    .result-card {
+        padding: 20px;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+}

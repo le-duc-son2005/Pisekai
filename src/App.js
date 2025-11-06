@@ -12,6 +12,9 @@ import Home from './components/Home.jsx';
 import Footer from './components/Footer.jsx';
 import { AuthProvider } from "./context/AuthContext";
 import GlobalPanel from './components/GlobalPanel.jsx';
+import Recharge from './components/recharge/Recharge.jsx';
+import RechargeSuccess from './components/recharge/recharge-success.jsx';
+import RechargeFail from './components/recharge/recharge-fail.jsx';
 
 function App() {
   
@@ -73,11 +76,14 @@ function App() {
               <GlobalPanel />
             </>
           } />
+          <Route path="/recharge" element={<Recharge />} />
+          <Route path="/recharge-success" element={<RechargeSuccess />} />
+          <Route path="/recharge-fail" element={<RechargeFail />} />
           
         </Routes>
       </Router> 
       </AuthProvider>  
-      {/* <Test /> */}
+      
     </div>
   );
 }
