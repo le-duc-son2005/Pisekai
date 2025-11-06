@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { characters } from "../share/data.js";
 import { Container, Row, Col, Button, ProgressBar, Form } from "react-bootstrap";
 import { getStatVariant } from "../Utils.js"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
+import API from "../api/api";
+import { AuthContext } from "../context/AuthContext";
 
 import '../style/Character.css'
 
 const Character = ({ show, onClose }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const currentChar = characters[currentIndex];
-    const [playerName, setPlayerName] = useState("");
+    const [saving, setSaving] = useState(false);
+    const { login } = useContext(AuthContext);
 
     const prevChar = () => {
         setCurrentIndex((prev) => (prev === 0 ? characters.length - 1 : prev - 1));
@@ -18,6 +21,24 @@ const Character = ({ show, onClose }) => {
 
     const nextChar = () => {
         setCurrentIndex((prev) => (prev === characters.length - 1 ? 0 : prev + 1));
+    };
+
+    const handleEnterGame = async () => {
+        if (saving) return;
+        try {
+            setSaving(true);
+            // Send only class; backend derives stats and persists
+            await API.post("/characters/select", { class: currentChar.name });
+            // Refresh current user to get updated characterId
+            const { data } = await API.get("/auth/me");
+            login(data); // update context + localStorage
+            onClose?.();
+        } catch (err) {
+            console.error("Select character failed:", err?.response?.data || err.message);
+            alert(err?.response?.data?.message || "Không thể chọn nhân vật. Vui lòng thử lại.");
+        } finally {
+            setSaving(false);
+        }
     };
 
     if (!show) return null;
@@ -56,13 +77,7 @@ const Character = ({ show, onClose }) => {
                     <Col xs={11} md={5}>
                         <div className="character-info p-4 rounded-4 shadow-lg">
                             <h3 className="mb-3">{currentChar.name}</h3>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Your Name ..."
-                                className="mb-3"
-                                value={playerName}
-                                onChange={(e) => setPlayerName(e.target.value)}
-                            />
+
 
                             <div className="mb-2">HP</div>
                             <ProgressBar now={currentChar.stats.HP} label={`${currentChar.stats.HP}`} variant={getStatVariant(currentChar.stats.HP)} className="mb-2" />
@@ -76,7 +91,9 @@ const Character = ({ show, onClose }) => {
                             <div className="fw-bold mb-3">Buff: <span className="text-info">{currentChar.buff}</span></div>
 
                             <div className="d-flex  align-items-center">
-                                <Button className="px-4 ms-auto enter-btn fw-bold">Enter Game</Button>  
+                                <Button className="px-4 ms-auto enter-btn fw-bold" onClick={handleEnterGame} disabled={saving}>
+                                    {saving ? "Saving..." : "Enter Game"}
+                                </Button>  
                             </div>
                         </div>
                     </Col>

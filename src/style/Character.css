@@ -58,6 +58,14 @@
   background-color: rgba(70, 70, 70, 1);
 }
 
+.character-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000;
+    border-radius: 10px;
+}
 
 .character-info {
   background: rgba(20, 20, 20, 0.85);
@@ -70,6 +78,32 @@
 }
 .enter-btn:hover, .enter-btn:active{
   background-color: rgba(255, 191, 108, 0.794) !important;
+}
+
+/* Reusable auth open button to match character action button style */
+.auth-open-btn {
+  background-color: rgb(255, 183, 90);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+}
+.auth-open-btn:hover,
+.auth-open-btn:active {
+  background-color: rgba(255, 191, 108, 0.9) !important;
+}
+
+/* Avatar edit button: hidden by default, visible on hover */
+.avatar-edit-wrap .avatar-edit-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 2;
+}
+.avatar-edit-wrap:hover .avatar-edit-btn {
+  opacity: 1;
+  pointer-events: auto;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.98); }
@@ -89,3 +123,4 @@
     height: 24px;
   }
 }
+

@@ -33,3 +33,12 @@
 .pros-rarity{
   font-family: "Poetsen One", sans-serif;
 }
+
+.inven-title {
+  font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000;
+    border-radius: 10px;
+}

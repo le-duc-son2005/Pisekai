@@ -14,6 +14,7 @@ const userSchema = new Schema({
   gold: { type: Number, default: 0 },
   gems: { type: Number, default: 0 },
   inventoriesId: { type: Types.ObjectId, ref: "Inventory", default: null },
+  avatar: { type: String, default: null },
 
   // Timestamps
   joinedAt: { type: Date, default: Date.now },

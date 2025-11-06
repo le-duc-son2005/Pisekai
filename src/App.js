@@ -5,7 +5,7 @@ import Starter from './components/Starter.jsx';
 import WeaponList from './components/WeaponList.jsx';
 import Header from './components/Header.jsx';
 import Marketplace from './components/Marketplace.jsx';
-import Character from './components/Character.jsx';
+import CharacterPage from './components/CharacterPage.jsx';
 import Store from './components/Store.jsx';
 import Leaderboard from './components/LeaderBoard.jsx';
 import Home from './components/Home.jsx';
@@ -56,8 +56,9 @@ function App() {
           <Route path="/Character" element={
             <>
               <Header />
-              <Character />
+              <CharacterPage />
               <Footer />
+              <GlobalPanel />
             </>
           } />
           <Route path="/WeaponList" element={

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import LoginForm from "./auth/LoginForm";
 import RegisterForm from "./auth/RegisterForm";
@@ -10,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 
 // Right-side slide-out panel with 2 modes: auth forms or user menu
-const SlidePanel = ({ open, onClose }) => {
+const SlidePanel = ({ open, onClose, externalTab }) => {
   const { user, logout } = useContext(AuthContext);
   const [tab, setTab] = useState("login");
   const navigate = useNavigate();
@@ -19,6 +20,11 @@ const SlidePanel = ({ open, onClose }) => {
   useEffect(() => {
     if (open && !user) setTab("login");
   }, [open, user]);
+
+  // React to external requests to switch tab (e.g., open-panel event)
+  useEffect(() => {
+    if (externalTab) setTab(externalTab);
+  }, [externalTab]);
 
   // format big numbers so they don't overflow (e.g., 2.2K, 3.4M)
   const fmtCompact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
