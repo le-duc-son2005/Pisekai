@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.leaderboard-container {
+  text-align: center;
+  color: white;
+  background: linear-gradient(to bottom, #0a0a16, #141427);
+  font-family: 'Press Start 2P', cursive;
+  min-height: 100vh;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+.leaderboard-title {
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px #000;
+  font-size: 1rem;
+  margin-bottom: 25px;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  from { opacity: 1; }
+  to { opacity: 0.85; }
+}
+
+/* table animation */
+.table-container {
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: all 0.8s ease;
+}
+
+.table-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.row-entry {
+  display: grid;
+  grid-template-columns: 80px 80px 1fr 1fr 80px;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  margin-bottom: 8px;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #444;
+  transition: all 0.3s ease;
+  animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.row-entry:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px gold;
+}
+
+/* glowing top 3 */
+.top-1 {
+  background: linear-gradient(to right, #ffea00, #ffd700);
+  color: #111;
+  animation: glowGold 1.8s ease-in-out infinite alternate;
+}
+@keyframes glowGold {
+  from { box-shadow: 0 0 10px #ffd700; }
+  to { box-shadow: 0 0 20px #ffea00; }
+}
+
+.top-2 {
+  background: linear-gradient(to right, #d8d8d8, #b0b0b0);
+  color: #111;
+  animation: glowSilver 1.8s ease-in-out infinite alternate;
+}
+@keyframes glowSilver {
+  from { box-shadow: 0 0 10px #b0b0b0; }
+  to { box-shadow: 0 0 20px #e0e0e0; }
+}
+
+.top-3 {
+  background: linear-gradient(to right, #cd7f32, #ffb347);
+  color: #111;
+  animation: glowBronze 1.8s ease-in-out infinite alternate;
+}
+@keyframes glowBronze {
+  from { box-shadow: 0 0 10px #cd7f32; }
+  to { box-shadow: 0 0 20px #ffb347; }
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  animation: idle 2s ease-in-out infinite;
+}
+
+.view-rank-btn {
+  background: transparent;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  padding: 10px 20px;
+  margin-top: 25px;
+  border-radius: 8px;
+  font-family: 'Press Start 2P';
+  cursor: pointer;
+  transition: 0.3s;
+}
+.view-rank-btn:hover {
+  background: #ffcc00;
+  color: #000;
+  box-shadow: 0 0 15px #ffcc00;
+}

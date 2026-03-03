@@ -8,9 +8,8 @@ import inventoryRoutes from "./routes/inventoryRoutes.js";
 import rechargeRoutes from "./routes/rechargeRoutes.js";
 import characterRoutes from "./routes/characterRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-
-
-
+import storeRoutes from "./routes/storeRoutes.js";
+import leaderboardRoutes from "./routes/leaderboardRoute.js";
 
 dotenv.config();
 connectDB();
@@ -25,6 +24,8 @@ app.use("/api/inventory", inventoryRoutes);
 app.use("/api/recharge", rechargeRoutes);
 app.use("/api/characters", characterRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/store", storeRoutes);
+app.use("/api/leaderboard", leaderboardRoutes);
 
 app.get('/', (req, res) => {
   res.send('Backend is running...');

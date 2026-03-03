@@ -1,0 +1,9 @@
+/* Basic weapon list styles to prevent compile errors */
+.weapon-page { min-height: 100vh; background: #f4f6f9; }
+.weapon-element { background: #1f2630; color: #e7eef7; border-radius: 10px; }
+.weapon-element-img-top { height: 180px; object-fit: contain; }
+.weapon-element-body { padding: 12px; }
+.weapon-element-title { color: #ffd166; font-weight: 800; }
+.weapon-element-text { font-size: 0.95rem; }
+.text-detail { opacity: 0.9; }
+.pros-rarity { font-weight: 700; }

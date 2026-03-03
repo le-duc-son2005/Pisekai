@@ -1,0 +1,313 @@
+.pm-total-label {
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+/* Store page parchment background */
+.store-page {
+	/* Place the provided image at public/image/store-bg.jpg */
+	background-image: url("/src/asserts/storeBackground.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	min-height: 100vh;
+}
+
+
+
+
+/* Store purchase modal theming */
+.purchase-modal .modal-content {
+	background: #1b1c20;
+	color: #fff;
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+/* ===================== */
+/* Store list card theme */
+/* ===================== */
+.store-page .weapon-element {
+	background: linear-gradient(180deg, #2b333d, #232a33);
+	border: 6px solid #7a4a2a; /* warm brown frame */
+	border-radius: 12px;
+	box-shadow: inset 0 0 0 2px rgba(202, 160, 106, 0.6), 0 8px 18px rgba(0,0,0,0.35);
+}
+
+.store-page .weapon-element:hover {
+	transform: translateY(-2px);
+	outline: none; /* avoid white outline from shared css */
+	box-shadow: inset 0 0 0 2px rgba(202, 160, 106, 0.8), 0 12px 24px rgba(0,0,0,0.4);
+}
+
+.store-page .market-card-img-wrap {
+	background: radial-gradient(100% 140% at 50% 0%, #3b4653 0%, #2a323c 60%, #232a33 100%);
+	border-bottom: 4px solid #7a4a2a;
+	padding: 8px;
+}
+
+.store-page .weapon-element-img-top {
+	height: 180px;
+	object-fit: contain;
+	image-rendering: pixelated; /* keep pixel-art feel */
+}
+
+.store-page .weapon-element-title {
+	color: #ffd166;
+	text-shadow: 0 2px 0 #b8860b, 0 4px 10px rgba(0,0,0,0.45);
+}
+
+.store-page .weapon-element-body {
+	color: #e7eef7;
+}
+
+.store-page .pros-rarity {
+	filter: saturate(1.25);
+}
+
+.store-page .market-price {
+	font-weight: 800;
+	color: #f0b90b;
+	text-shadow: 0 1px 0 #a7740f;
+}
+
+/* Golden pixel-like buy button for Store */
+.store-page .market-buy-btn {
+	font-weight: 800;
+	font-family: "Poetsen One", sans-serif;
+	background: linear-gradient(135deg, #ffdf82, #f0b90b);
+	color: #1f1f24;
+	border: 3px solid #b8781a;
+	border-radius: 10px;
+	box-shadow: 0 6px 0 #8f5a12, inset 0 0 8px rgba(255,255,255,0.35);
+}
+
+.store-page .market-buy-btn:hover {
+	filter: brightness(1.05);
+	box-shadow: 0 7px 0 #8f5a12, inset 0 0 10px rgba(255,255,255,0.45);
+}
+
+.store-page .market-buy-btn:active {
+	transform: translateY(2px);
+	box-shadow: 0 4px 0 #8f5a12, inset 0 0 8px rgba(255,255,255,0.35);
+}
+
+/* Footer area under the buy button (avoid white background) */
+.store-card-footer {
+	background: linear-gradient(180deg, #232a33, #1e242c);
+	border-top: 4px solid #7a4a2a;
+}
+
+/* Truncate long descriptions with ellipsis */
+.store-page .store-desc {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3; /* show up to 3 lines */
+	line-clamp: 3; /* standard property for compatibility */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+}
+
+.pm-header {
+	background: linear-gradient(180deg, rgba(255, 209, 102, 0.08), transparent);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pm-title {
+	font-family: "Press Start 2P", system-ui, sans-serif;
+	color: #ffd166;
+	font-size: 28px;
+	letter-spacing: 1px;
+	text-shadow: 0 2px 0 #b8860b, 0 4px 12px rgba(0, 0, 0, 0.6);
+	text-align: center;
+}
+
+.pm-body {
+	padding: 16px 18px;
+}
+
+.pm-item {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	background: linear-gradient(180deg, #121317, #14151d);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	padding: 12px;
+}
+
+.pm-image {
+	width: 96px;
+	height: 96px;
+	object-fit: contain;
+	border-radius: 50%;
+	background: radial-gradient(80% 80% at 50% 50%, rgba(255, 140, 0, 0.25), rgba(0,0,0,0) 60%);
+	box-shadow: 0 0 0 6px rgba(255, 140, 0, 0.35), inset 0 0 18px rgba(255, 140, 0, 0.25);
+}
+
+/* Rarity-tinted backgrounds and rings */
+/* Uncommon: white tint */
+.rarity-uncommon {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), #14151d);
+	border-color: rgba(255, 255, 255, 0.18);
+}
+.rarity-uncommon .pm-image {
+	background: radial-gradient(80% 80% at 50% 50%, rgba(255, 255, 255, 0.25), rgba(0,0,0,0) 60%);
+	box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.35), inset 0 0 18px rgba(255, 255, 255, 0.25);
+}
+
+/* Common: green tint */
+.rarity-common {
+	background: linear-gradient(180deg, rgba(34, 197, 94, 0.10), #14151d);
+	border-color: rgba(34, 197, 94, 0.25);
+}
+.rarity-common .pm-image {
+	background: radial-gradient(80% 80% at 50% 50%, rgba(34, 197, 94, 0.25), rgba(0,0,0,0) 60%);
+	box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.35), inset 0 0 18px rgba(34, 197, 94, 0.25);
+}
+
+.rarity-rare {
+	background: linear-gradient(180deg, rgba(0, 160, 255, 0.08), #14151d);
+	border-color: rgba(0, 160, 255, 0.18);
+}
+.rarity-rare .pm-image {
+	background: radial-gradient(80% 80% at 50% 50%, rgba(0, 160, 255, 0.25), rgba(0,0,0,0) 60%);
+	box-shadow: 0 0 0 6px rgba(0, 160, 255, 0.35), inset 0 0 18px rgba(0, 160, 255, 0.25);
+}
+
+.rarity-epic {
+	background: linear-gradient(180deg, rgba(170, 0, 255, 0.08), #14151d);
+	border-color: rgba(170, 0, 255, 0.18);
+}
+.rarity-epic .pm-image {
+	background: radial-gradient(80% 80% at 50% 50%, rgba(170, 0, 255, 0.25), rgba(0,0,0,0) 60%);
+	box-shadow: 0 0 0 6px rgba(170, 0, 255, 0.35), inset 0 0 18px rgba(170, 0, 255, 0.25);
+}
+
+/* Legendary: orange-gold tint */
+.rarity-legendary {
+	background: linear-gradient(180deg, rgba(245, 158, 11, 0.12), #14151d);
+	border-color: rgba(245, 158, 11, 0.28);
+}
+.rarity-legendary .pm-image {
+	background: radial-gradient(80% 80% at 50% 50%, rgba(240, 185, 11, 0.25), rgba(0,0,0,0) 60%);
+	box-shadow: 0 0 0 6px rgba(240, 185, 11, 0.38), inset 0 0 18px rgba(240, 185, 11, 0.25);
+}
+
+.pm-name {
+	font-weight: 800;
+	font-family: "Poetsen One", sans-serif;
+}
+
+.pm-unit-price {
+	opacity: 0.85;
+	font-size: 14px;
+}
+
+.pm-section-title {
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.pm-qty .pm-circle-btn {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border-color: rgba(255, 255, 255, 0.15);
+	background: #191a20;
+	color: #fff;
+	box-shadow: inset 0 0 8px rgba(255,255,255,0.1), 0 0 10px rgba(0, 180, 255, 0.25);
+}
+
+.pm-qty .pm-qty-input {
+	background: #0f1115;
+	border-color: rgba(255, 255, 255, 0.12);
+	color: #fff;
+	font-weight: 700;
+	height: 48px;
+}
+
+.pm-qty-glow {
+	height: 6px;
+	border-radius: 999px;
+	margin-top: 8px;
+	background: linear-gradient(90deg, rgba(0, 200, 255, 0.1), rgba(0, 200, 255, 0.55), rgba(0, 200, 255, 0.1));
+}
+
+.pm-total {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 12px;
+	border-radius: 12px;
+	background: #14151d;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pm-total-value {
+	font-weight: 800;
+	font-size: 20px;
+}
+.pm-total-value.gold { color: #f0b90b; }
+.pm-total-value.gem { color: #0ea5e9; }
+
+.pm-footer {
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pm-cancel-btn {
+	background: linear-gradient(180deg, #3a3d45, #2a2c33);
+	border-color: rgba(255, 255, 255, 0.12);
+	border-radius: 14px;
+	padding: 10px 16px;
+}
+.pm-cancel-btn:hover { filter: brightness(1.06); }
+
+.pm-buy-btn {
+	background: linear-gradient(135deg, #bd4d4d, #a52424);
+	border: none;
+	border-radius: 14px;
+	font-weight: 800;
+	padding: 10px 22px;
+	box-shadow: 0 8px 18px rgba(255, 60, 60, 0.35);
+}
+.pm-buy-btn:hover { filter: brightness(1.06); }
+
+/* Close button tint */
+.purchase-modal .btn-close {
+	filter: invert(1) brightness(1.2);
+}
+
+/* ===================== */
+/* Store pagination bar  */
+/* ===================== */
+.store-pagination {
+	display: block;
+}
+.store-pagination .pagination {
+	gap: 6px;
+	background: transparent;
+}
+.store-pagination .page-item .page-link {
+	background: #2b2f3a;
+	border: 1px solid #d7b56d;
+	color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+}
+.store-pagination .page-item .page-link:hover {
+	border-color: #f6d06b;
+	color: #f6d06b;
+}
+.store-pagination .page-item.active .page-link {
+	background: linear-gradient(135deg, #ffdf82, #f0b90b);
+	border-color: #d7a233;
+	color: #1f1f24;
+	font-weight: 800;
+	box-shadow: 0 3px 0 #8f5a12, inset 0 0 8px rgba(255,255,255,0.35);
+}
+.store-pagination .page-item.disabled .page-link {
+	opacity: 0.6;
+}

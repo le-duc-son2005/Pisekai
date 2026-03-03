@@ -30,17 +30,17 @@ export const selectCharacter = async (req, res) => {
     const userId = req.user?.id;
     const { class: className } = req.body;
 
-    if (!userId) return res.status(401).json({ message: "Chưa đăng nhập" });
-    if (!className) return res.status(400).json({ message: "Thiếu class" });
+    if (!userId) return res.status(401).json({ message: "Not logged in" });
+    if (!className) return res.status(400).json({ message: "Missing class" });
 
     const def = CLASS_CATALOG[className];
-    if (!def) return res.status(400).json({ message: "Class không hợp lệ" });
+    if (!def) return res.status(400).json({ message: "Invalid class" });
 
     // Enforce single-role: if user already has a character, do not overwrite
     const user = await User.findById(userId).select("characterId");
-    if (!user) return res.status(404).json({ message: "Không tìm thấy user" });
+    if (!user) return res.status(404).json({ message: "User not found" });
     if (user.characterId) {
-      return res.status(400).json({ message: "Bạn đã chọn nhân vật rồi" });
+      return res.status(400).json({ message: "You already have a character" });
     }
 
     // Build document fields
@@ -61,7 +61,7 @@ export const selectCharacter = async (req, res) => {
     await User.findByIdAndUpdate(userId, { characterId: character._id });
 
     return res.status(200).json({
-      message: "Chọn nhân vật thành công",
+      message: "Select character successfully",
       character,
     });
   } catch (err) {
@@ -69,13 +69,22 @@ export const selectCharacter = async (req, res) => {
   }
 };
 
+export const getCharacterClasses = (_req, res) => {
+  const catalog = Object.entries(CLASS_CATALOG).map(([className, def]) => ({
+    name: className,
+    stats: def.stats,
+    buff: def.buff,
+  }));
+  return res.json(catalog);
+};
+
 export const getMyCharacter = async (req, res) => {
   try {
     const userId = req.user?.id;
-    if (!userId) return res.status(401).json({ message: "Chưa đăng nhập" });
+    if (!userId) return res.status(401).json({ message: "Not logged in" });
 
     const character = await Character.findOne({ userId });
-    if (!character) return res.status(404).json({ message: "Chưa có nhân vật" });
+    if (!character) return res.status(404).json({ message: "You don't have a character yet" });
 
     return res.json(character);
   } catch (err) {

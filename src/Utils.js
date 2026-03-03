@@ -2,16 +2,22 @@
 import { useRef, useEffect, useState } from 'react';
 
 export function autoChangeRarityColor(rarity) {
-  switch (rarity.toLowerCase()) {
-
+  const key = (rarity || '').toLowerCase();
+  // Mapping per request:
+  // uncommon → white, common → green, rare → blue, epic → purple, legendary → orange-gold
+  switch (key) {
     case 'uncommon':
-      return 'gray';
+      return '#ffffff';
+    case 'common':
+      return '#22c55e'; // green
     case 'rare':
-      return 'blue';
+      return '#0ea5e9'; // blue
     case 'epic':
-      return 'purple';
+      return '#a855f7'; // purple
+    case 'legendary':
+      return '#f59e0b'; // orange-gold
     default:
-      return 'black';
+      return '#e5e7eb'; // neutral light
   }
 }
 

@@ -1,0 +1,12 @@
+.footer-bar {
+  width: 100%;
+  background: linear-gradient(180deg, #1c2634, #0f141d);
+  border-top: 3px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-text {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}

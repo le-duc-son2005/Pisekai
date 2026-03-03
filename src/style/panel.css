@@ -314,3 +314,16 @@
     /* optional subtle cue when open */
     background: #1b1c20;
 }
+
+/* Centered auth requirement title (yellow, pixel style) */
+.auth-title {
+    color: #ffcc33;
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    letter-spacing: 1px;
+    /* Stronger multi-layer shadow for bold pixel look */
+    text-shadow:
+        0 2px 0 #b8860b,
+        0 3px 0 #b8860b,
+        0 4px 0 #8a6b00,
+        0 6px 12px rgba(0,0,0,.65);
+}

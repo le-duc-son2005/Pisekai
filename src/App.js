@@ -1,20 +1,21 @@
 
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Starter from './components/Starter.jsx';
-import WeaponList from './components/WeaponList.jsx';
-import Header from './components/Header.jsx';
-import Marketplace from './components/Marketplace.jsx';
-import CharacterPage from './components/CharacterPage.jsx';
-import Store from './components/Store.jsx';
-import Leaderboard from './components/LeaderBoard.jsx';
-import Home from './components/Home.jsx';
-import Footer from './components/Footer.jsx';
+import Starter from './layouts/Starter.jsx';
+import WeaponList from './page/Inventory/components/WeaponList.jsx';
+import Header from './layouts/Header.jsx';
+import Marketplace from './page/market/components/Marketplace.jsx';
+import CharacterPage from './page/character/components/CharacterPage.jsx';
+import Store from './page/store/components/Store.jsx';
+import Leaderboard from './page/leaderBoard/components/LeaderBoard.jsx';
+import Profile from './page/profile/components/Profile.jsx';
+import Home from './layouts/Home.jsx';
+import Footer from './layouts/Footer.jsx';
 import { AuthProvider } from "./context/AuthContext";
-import GlobalPanel from './components/GlobalPanel.jsx';
-import Recharge from './components/recharge/Recharge.jsx';
-import RechargeSuccess from './components/recharge/recharge-success.jsx';
-import RechargeFail from './components/recharge/recharge-fail.jsx';
+import GlobalPanel from './subsystem/panel/GlobalPanel.jsx';
+import Recharge from './subsystem/recharge/Recharge.jsx';
+import RechargeSuccess from './subsystem/recharge/recharge-success.jsx';
+import RechargeFail from './subsystem/recharge/recharge-fail.jsx';
 
 function App() {
   
@@ -78,6 +79,16 @@ function App() {
             </>
           } />
           <Route path="/recharge" element={<Recharge />} />
+          <Route path="/recharge/success" element={<RechargeSuccess />} />
+          <Route path="/recharge/fail" element={<RechargeFail />} />
+          <Route path="/Profile" element={
+            <>
+              <Header />
+              <Profile />
+              <Footer />
+              <GlobalPanel />
+            </>
+          } />
           <Route path="/recharge-success" element={<RechargeSuccess />} />
           <Route path="/recharge-fail" element={<RechargeFail />} />
           
